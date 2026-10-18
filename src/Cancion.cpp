@@ -1,11 +1,9 @@
 #include "Cancion.h"
-
 #include <iostream>
 
 Cancion::Cancion(const std::string& titulo, int min, int seg,
                  const std::string& artista, const std::string& genero)
-    : Pista(titulo, min, seg), artista(artista), genero(genero) {
-}
+    : Pista(titulo, min, seg), artista(artista), genero(genero) {}
 
 std::string Cancion::getArtista() const {
     return artista;
@@ -16,9 +14,7 @@ std::string Cancion::getGenero() const {
 }
 
 void Cancion::mostrar() const {
+    std::cout << "[Canción] ";
     mostrarInfo();
-
-    std::cout << "Artista: " << artista << std::endl;
-    std::cout << "Genero: " << genero << std::endl;
+    std::cout << " | Artista: " << artista << " | Género: " << genero << std::endl;
 }
-

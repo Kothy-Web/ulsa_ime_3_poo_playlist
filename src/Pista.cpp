@@ -1,6 +1,4 @@
-
 #include "Pista.h"
-
 #include <iostream>
 
 // Constructor de Pista
@@ -20,6 +18,16 @@ Duracion Pista::getDuracion() const {
     return duracion;
 }
 
-// Modifica el título
+// Modifica el título validando que no esté vacío
 void Pista::setTitulo(const std::string& nuevoTitulo) {
-   
+    if (nuevoTitulo.empty()) {
+        titulo = "Sin título";
+    } else {
+        titulo = nuevoTitulo;
+    }
+}
+
+void Pista::mostrarInfo() const {
+    std::cout << "Título: " << titulo << " | Duración: ";
+    duracion.imprimir();
+}

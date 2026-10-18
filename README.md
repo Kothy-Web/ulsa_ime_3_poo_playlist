@@ -7,21 +7,20 @@ Llena cada espacio conforme avances en las fases de [PRACTICA.md](PRACTICA.md).
 ## Fase 1. Entender el problema
 
 **1.1 El problema con mis propias palabras**
-
-[Inserta aquí tu respuesta]
+El sistema consiste en una aplicación para administrar una biblioteca de audio que organiza pistas (divididas en canciones y podcasts) dentro de listas de reproducción o playlists. Cada pista cuenta con un título y una duración. Las canciones incluyen información de artista y género, mientras que los podcasts incluyen anfitrión y número de episodio. Las playlists agrupan pistas existentes mediante referencias (sin adueñarse de ellas) y permiten calcular la duración total acumulada y mostrar su contenido de forma estructurada.
 
 **1.2 Sustantivos (posibles clases) y verbos (posibles métodos)**
 
-Sustantivos: _____
+Sustantivos: Playlist, Pista, Cancion, Podcast, Duracion, Artista, Genero, Anfitrion
 
-Verbos: _____
+Verbos: agregarCancion, agregarPodcast, cantidadPistas, duracionTotal, mostrar, mostrarInfo, totalSegundos, imprimir, setTitulo.
 
 **1.3 Relaciones** (completa con "es un", "tiene un" o "usa un")
 
-*   Una canción _____ pista.
-*   Un podcast _____ pista.
-*   Una pista _____ duración.
-*   Una playlist _____ canción.
+*   Una canción es un pista.
+*   Un podcast es un pista.
+*   Una pista tiene un duración.
+*   Una playlist usa un canción.
 
 ## Fase 2. Diseñar la solución
 
@@ -51,11 +50,11 @@ Verbos: _____
 
 **3.2 Experimentos guiados**
 
-Experimento 1, orden de construcción y destrucción: _____
+Experimento 1, orden de construcción y destrucción: Los constructores se ejecutan de la base a la derivada (Duracion -> Pista -> Cancion), y los destructores se ejecutan en orden inverso (de la derivada a la base).
 
-Experimento 2, ¿quién es dueño de quién?: _____
+Experimento 2, ¿quién es dueño de quién?: Al destruir la playlist al salir de su ámbito de bloque, la canción creada en main sigue existiendo intacta porque la playlist solo guarda punteros y no libera memoria de objetos externos (agregación).
 
-Experimento 3, un objeto en dos playlists: _____
+Experimento 3, un objeto en dos playlists: Al modificar el título de una canción original mediante setTitulo(), el cambio se refleja de inmediato al mostrar ambas playlists, comprobando que almacenan referencias al mismo objeto en memoria y no copias independientes.
 
 ## Fase 4. Probar y mejorar
 
@@ -91,8 +90,8 @@ Retos opcionales que intenté: _____
 
 **6.1 ¿Qué aprendiste en esta práctica?**
 
-[Inserta aquí tu respuesta]
+Aprendí a aplicar y distinguir de forma práctica los tres pilares de relación entre clases en C++ (herencia, composición y agregación). También comprendí la importancia de utilizar listas de inicialización en constructores de clases derivadas, así como el manejo seguro de vectores con punteros para evitar duplicados y gestionar referencias compartidas.
 
 **6.2 ¿Qué cambiarías de tu proceso la próxima vez?**
 
-[Inserta aquí tu respuesta]
+Definir con mayor anticipación las validaciones de datos limítrofes (como valores negativos o punteros nulos) antes de escribir la lógica principal, lo que facilitaría una depuración más rápida desde las primeras pruebas unitarias en el archivo main.cpp.

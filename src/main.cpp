@@ -1,32 +1,50 @@
-// Práctica 1: Playlist de música
-// Programación Orientada a Objetos - Ingeniería Mecatrónica, 3er semestre
-//
-// Compilar (desde la raíz del repositorio):
-//   g++ -Wall -Wextra -std=c++17 -Iinclude src/*.cpp -o playlist
-// Ejecutar:
-//   ./playlist
-//
-// Completa los TODO en el orden que indica la Fase 3 de PRACTICA.md.
-// Compila después de terminar cada clase, no hasta el final.
-
 #include <iostream>
-
+#include "Duracion.h"
+#include "Cancion.h"
+#include "Podcast.h"
 #include "Playlist.h"
 
 int main() {
-    std::cout << "Practica 1: Playlist de musica" << std::endl;
-    std::cout << "Plantilla lista. Completa los TODO de include/ y src/." << std::endl;
+    std::cout << "=== PRUEBA DEL SISTEMA DE PLAYLISTS ===\n" << std::endl;
 
-    // TODO 5.1: crea la biblioteca: al menos tres canciones y un podcast.
+    // 1. Crear biblioteca de pistas
+    Cancion c1("Bohemian Rhapsody", 5, 55, "Queen", "Rock");
+    Cancion c2("Stairway to Heaven", 8, 2, "Led Zeppelin", "Rock");
+    Cancion c3("Blinding Lights", 3, 20, "The Weeknd", "Synthwave");
 
-    // TODO 5.2: crea dos playlists y agrega pistas a cada una.
-    //   Al menos una canción debe estar en las dos playlists.
+    Podcast p1("Tech Talk #42", 45, 10, "Alex Dev", 42);
+    Podcast p2("Historia del Rock", 30, 0, "Maria Rocker", 5);
 
-    // TODO 5.3: muestra ambas playlists.
+    // 2. Crear Playlists
+    Playlist plRock("Rock Clasico");
+    Playlist plMix("Mix Variado");
 
-    // TODO 5.4: experimentos guiados de la Fase 3.
+    // 3. Agregar pistas a las playlists
+    plRock.agregarCancion(&c1);
+    plRock.agregarCancion(&c2);
+    plRock.agregarCancion(&c3);
 
-    // TODO 5.5: casos de prueba de la Fase 4.
+    // Pruebas de casos límite (duplicado y nullptr)
+    std::cout << "Agregando c1 duplicada (esperado 0/false): " << plRock.agregarCancion(&c1) << std::endl;
+    std::cout << "Agregando nullptr (esperado 0/false): " << plRock.agregarCancion(nullptr) << std::endl;
+
+    plMix.agregarCancion(&c1); // La misma canción en otra playlist (agregación)
+    plMix.agregarPodcast(&p1);
+    plMix.agregarPodcast(&p2);
+
+    // 4. Mostrar contenido de las playlists
+    std::cout << "\n";
+    plRock.mostrar();
+    std::cout << "\n";
+    plMix.mostrar();
+
+    // 5. Demostración de punteros (Experimento 3)
+    std::cout << "\n--- Modificando el titulo de c1 ---" << std::endl;
+    c1.setTitulo("Bohemian Rhapsody (Remastered)");
+
+    // Al imprimirse de nuevo, se refleja el cambio en ambas playlists porque guardan punteros
+    std::cout << "\nDespues de modificar la cancion original:" << std::endl;
+    plRock.mostrar();
 
     return 0;
 }

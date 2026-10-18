@@ -1,6 +1,3 @@
-// Interfaz de la clase Duracion.
-// Guarda un tiempo en minutos y segundos, siempre en un estado válido.
-
 #ifndef DURACION_H
 #define DURACION_H
 
@@ -10,16 +7,13 @@ private:
     int segundos;
 
 public:
-    Duracion(int min, int seg);
+    Duracion(int min = 0, int seg = 0);
 
     int getMinutos() const;
     int getSegundos() const;
 
-    // TODO 1.2: declara  int totalSegundos() const;
-
-    // TODO 1.3: declara  void imprimir() const;
-
-    // Pregunta: ¿qué significa el const al final de estos métodos?
+    int totalSegundos() const;
+    void imprimir() const;
 };
 
 #endif
